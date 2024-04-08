@@ -4,8 +4,11 @@ Module for executing multiple coroutines concurrently
 """
 
 import asyncio
-import random
+from typing import List
 
+wait_random = __import__('0-basic_async_syntax').wait_random
+
+<<<<<<< HEAD
 
 async def wait_random(max_delay: int = 10) -> float:
     """
@@ -18,9 +21,12 @@ async def wait_random(max_delay: int = 10) -> float:
 
 
 async def wait_n(n: int, max_delay: int) -> list:
+=======
+
+async def wait_n(n: int, max_delay: int) -> List[float]:
+>>>>>>> 0a61e29a5a9448d816320f5b3df8016d2d8e874e
     """
-    Asynchronous routine that spawns wait_random n times with the specified max_delay.
+    Asynchronous routine that spawns wait_random n times with the specified m
     Returns the list of all the delays (float values) in ascending order.
     """
-    delays = [await wait_random(max_delay) for _ in range(n)]
-    return sorted(delays)
+    return sorted([await wait_random(max_delay) for _ in range(n)])

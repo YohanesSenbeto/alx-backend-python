@@ -2,10 +2,12 @@
 """
 Module for working with asyncio Tasks
 """
-
 import asyncio
-import random
+from typing import List
 
+wait_n = __import__('1-concurrent_coroutines').wait_n
+
+<<<<<<< HEAD
 
 async def wait_random(max_delay: int) -> float:
     """
@@ -18,9 +20,12 @@ async def wait_random(max_delay: int) -> float:
 
 
 async def task_wait_n(n: int, max_delay: int) -> list:
+=======
+
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
+>>>>>>> 0a61e29a5a9448d816320f5b3df8016d2d8e874e
     """
-    Asynchronous routine that spawns wait_random n times with the specified max_delay.
-    Returns the list of all the delays (float values).
+    Asynchronous coroutine that waits for a random delay between 0 and max_dely
+    seconds and eventually returns it.
     """
-    tasks = [wait_random(max_delay) for _ in range(n)]
-    return await asyncio.gather(*tasks)
+    return await wait_n(n, max_delay)
